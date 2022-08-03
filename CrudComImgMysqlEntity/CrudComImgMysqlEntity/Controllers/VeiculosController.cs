@@ -21,7 +21,7 @@ namespace CrudComImgMysqlEntity.Controllers
         public async Task<ActionResult<List<Veiculo>>>BuscarTodosVeiculos()
         {
             var buscarTodosVeiculos = _context.Veiculos.ToList();
-            return Ok(BuscarTodosVeiculos);
+            return Ok(buscarTodosVeiculos);
         }
         [HttpGet]
         [Route("BuscarVeiculoPorPlaca/{placa}")]
@@ -44,7 +44,7 @@ namespace CrudComImgMysqlEntity.Controllers
         }
 
         [HttpPut]
-        [Route("AtualizarVeiculo")]
+        [Route("AtualizarVeiculo/{placa}")]
         public async Task<ActionResult<string>> AtualizarVeiculo(Veiculo veiculos,string placa)
         {
             if(veiculos.Placa != placa)
@@ -59,18 +59,18 @@ namespace CrudComImgMysqlEntity.Controllers
         }
 
         [HttpDelete]
-        [Route("DeletarVeiculo/{placa}")]
-        public async Task<ActionResult<string>>DeletarVeiculo(Veiculo veiculos,string placa)
+        [Route("DeletarVeiculo/{id}")]
+        public async Task<ActionResult<Veiculo>>DeletarVeiculo(int id)
         {
-            if(veiculos.Placa != placa)
+            if(id == null)
             {
                 return BadRequest("Veiculo não encontrado,Favor verificar placa!");
             }
-
-            _context.Veiculos.Remove(veiculos);
+            var buscarVeiculoPorPlaca =  _context.Veiculos.Find(id);
+             _context.Veiculos.Remove(buscarVeiculoPorPlaca);
             _context.SaveChanges();
 
-            return Ok("Veiculo excluido com sucesso!!");
+            return Ok("Veiculo deletado do sistema!!");
 
         }
 

@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace CrudComImgMysqlEntity.Models
 {
 
-   
+    
     public class Veiculo
     {
-
+        
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
         [Display(Name = "CodigoVeiculo")]
@@ -21,9 +21,9 @@ namespace CrudComImgMysqlEntity.Models
         public string Placa { get; set; }
 
         [Required]
-        [Display(Name = "Modelo")]
-        [Column("Modelo")]
-        public string? Modelo { get; set; }
+        [Display(Name = "Marca")]
+        [Column("Marca")]
+        public string? Marca { get; set; }
 
         [Required]
         [Display(Name = "NomeDoVeiculo")]

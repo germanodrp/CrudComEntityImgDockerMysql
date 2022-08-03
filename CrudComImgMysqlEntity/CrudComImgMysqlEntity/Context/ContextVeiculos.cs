@@ -15,11 +15,11 @@ namespace CrudComImgMysqlEntity.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Veiculo>(v =>
-            {
-                v.ToTable("Veiculos");
-                v.HasKey(v => v.IdVeiculo);
+           {
+               v.ToTable("Veiculos");
+               v.HasKey(v => v.IdVeiculo);
 
-            });
+           });
         }
     }
 }
